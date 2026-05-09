@@ -1,23 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DragWindow : MonoBehaviour
 {
-	
 	/// <summary>
 	/// Simple click-and-drag, but moves the actual window (if not fullscreen)
 	/// </summary>
-	
-	new Collider2D collider = null;
-	bool draggingWindow = false;
 
-	void Awake()
+	private new Collider2D collider = null;
+	private bool draggingWindow = false;
+
+	private void Awake()
 	{
 		collider = GetComponent<Collider2D>();
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (!Input.GetMouseButton(0))
 		{
@@ -29,7 +26,7 @@ public class DragWindow : MonoBehaviour
 		{
 			Vector2 pos = TransparentWindow.Camera.ScreenToWorldPoint(Input.mousePosition);
 
-			var overlapCollider = Physics2D.OverlapPoint(pos);
+			Collider2D overlapCollider = Physics2D.OverlapPoint(pos);
 			if (!overlapCollider)
 			{
 				draggingWindow = false;

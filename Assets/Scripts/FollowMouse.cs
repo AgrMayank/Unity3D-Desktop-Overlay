@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FollowMouse : MonoBehaviour
 {
-	new Camera camera;
+	private new Camera camera;
 
-	void Awake()
+	private void Awake()
 	{
-		camera = FindObjectOfType<Camera>();
+		camera = FindAnyObjectByType<Camera>();
 	}
-	
-	void Update()
+
+	private void Update()
 	{
-		var mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 		transform.position = mousePos;
 	}
 }

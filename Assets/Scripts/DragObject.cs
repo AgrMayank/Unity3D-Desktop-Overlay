@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DragObject : MonoBehaviour
 {
-	[Tooltip("What GameObject layers should the click query against?")] [SerializeField]
-	LayerMask clickLayerMask = ~0;
+	[Tooltip("What GameObject layers should the click query against?")]
+	[SerializeField]
+	private LayerMask clickLayerMask = ~0;
 
-	TargetJoint2D joint;
+	private TargetJoint2D joint;
 
-	void Update()
+	private void Update()
 	{
 		if (!Input.GetMouseButton(0))
 		{
@@ -36,13 +34,13 @@ public class DragObject : MonoBehaviour
 			return;
 		}
 
-		var overlapCollider = Physics2D.OverlapPoint(pos, clickLayerMask);
+		Collider2D overlapCollider = Physics2D.OverlapPoint(pos, clickLayerMask);
 		if (!overlapCollider)
 		{
 			return;
 		}
 
-		var attachedRigidbody = overlapCollider.attachedRigidbody;
+		Rigidbody2D attachedRigidbody = overlapCollider.attachedRigidbody;
 		if (!attachedRigidbody)
 		{
 			return;

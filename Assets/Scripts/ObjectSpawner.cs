@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-	[Tooltip("Prefab to spawn on click")] [SerializeField]
-	GameObject prefab = null;
+	[Tooltip("Prefab to spawn on click")]
+	[SerializeField]
+	private GameObject prefab = null;
 
-	[Tooltip("If enabled, SystemInput will allow clicks to be detected even without window focus")] [SerializeField]
-	bool useSystemInputIfAvailable = false;
+	[Tooltip("If enabled, SystemInput will allow clicks to be detected even without window focus")]
+	[SerializeField]
+	private bool useSystemInputIfAvailable = false;
 
-	void Update()
+	private void Update()
 	{
 		if (useSystemInputIfAvailable)
 		{
@@ -28,9 +28,9 @@ public class ObjectSpawner : MonoBehaviour
 		}
 	}
 
-	void InstantiatePrefab()
+	private void InstantiatePrefab()
 	{
-		var pos = TransparentWindow.Camera.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 pos = TransparentWindow.Camera.ScreenToWorldPoint(Input.mousePosition);
 		Instantiate(prefab, pos, Quaternion.identity);
 	}
 }

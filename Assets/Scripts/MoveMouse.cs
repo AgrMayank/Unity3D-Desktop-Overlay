@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveMouse : MonoBehaviour
 {
@@ -8,17 +6,17 @@ public class MoveMouse : MonoBehaviour
 	/// This script demonstrates moving the cursor via the Numpad keys.
 	/// The logic is the same as moving a 2D object, though the y-axis is reversed (y-down rather than Unity's y-up)
 	/// </summary>
-	
-	[SerializeField] float moveSpeed = 500f;
 
-	void Update()
+	[SerializeField] private float moveSpeed = 500f;
+
+	private void Update()
 	{
 		float delta = Time.deltaTime * moveSpeed;
 
 		Vector2 position = SystemInput.GetCursorPosition();
 
 		//TODO: Add keyboard keys to SystemInput so we don't need focus to read Input
-//		if (SystemInput.GetKey(KeyCode.Keypad8))
+		// if (SystemInput.GetKey(KeyCode.Keypad8))
 
 		if (Input.GetKey(KeyCode.Keypad8))
 		{
